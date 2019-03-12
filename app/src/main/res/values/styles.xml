@@ -1,0 +1,43 @@
+<resources>
+
+    <style name="NoActionBarTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorGreen2</item>
+        <item name="android:textColor">@color/colorGreen6</item>
+    </style>
+
+    <style name="TextViewButtonStyle">
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:layout_marginBottom">7dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/textview_btn_style</item>
+    </style>
+
+    <style name="TextViewTitleStyle">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorGreen6</item>
+    </style>
+
+    <style name="TextViewDescriptionStyle">
+        <item name="android:gravity">fill_horizontal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorGreen6</item>
+    </style>
+</resources>

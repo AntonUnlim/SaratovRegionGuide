@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/colorWhite">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linearLayoutButtons"
+        android:src="@drawable/main"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayoutButtons">
+        <TextView
+            style="@style/TextViewButtonStyle"
+            android:id="@+id/textViewLinks"
+            android:onClick="startLinks"
+            android:layout_weight="1"
+            android:text="Ссылки"/>
+        <TextView
+            style="@style/TextViewButtonStyle"
+            android:id="@+id/textViewRegions"
+            android:onClick="startRegions"
+            android:layout_weight="1"
+            android:text="Районы"/>
+    </LinearLayout>
+
+</RelativeLayout>
