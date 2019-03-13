@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextSearch"
-        android:hint="Поиск"/>
+        android:hint="Поиск"
+        android:textColor="@color/colorGreen6"
+        android:textColorHint="@color/colorGreen3"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
