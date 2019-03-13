@@ -22,7 +22,8 @@ public class RegionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_region);
 
-        currentRegion = (Region) getIntent().getSerializableExtra(Data.INTENT_REGION);
+        int regionID = getIntent().getIntExtra(Data.INTENT_REGION_ID, -1);
+        currentRegion = Data.findRegionByID(regionID);
         TextView textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         TextView textViewRegionalCenter = (TextView) findViewById(R.id.textViewRegionalCenter);
         imageViewEmblem = (ImageView) findViewById(R.id.imageViewEmblem);
@@ -32,7 +33,7 @@ public class RegionActivity extends AppCompatActivity {
         textViewTitle.setText(currentRegion.getNominativeName());
         textViewRegionalCenter.setText(currentRegion.getNominativeRegionalCenter());
         try {
-            InputStream inputStream = getAssets().open(currentRegion.getPathToEmblem());
+            InputStream inputStream = getAssets().open(currentRegion.getEmblemPath());
             Drawable image = Drawable.createFromStream(inputStream, null);
             imageViewEmblem.setImageDrawable(image);
         } catch (IOException e) {
@@ -44,14 +45,14 @@ public class RegionActivity extends AppCompatActivity {
 
     public void startRegionalCenterSights(View v) {
         Intent intent = new Intent(RegionActivity.this, SightsActivity.class);
-        intent.putExtra(Data.INTENT_REGION, currentRegion);
+        intent.putExtra(Data.INTENT_REGION_ID, currentRegion.getID());
         intent.putExtra(Data.INTENT_IS_REGION, false);
         startActivity(intent);
     }
 
     public void startRegionSights(View v) {
         Intent intent = new Intent(RegionActivity.this, SightsActivity.class);
-        intent.putExtra(Data.INTENT_REGION, currentRegion);
+        intent.putExtra(Data.INTENT_REGION_ID, currentRegion.getID());
         intent.putExtra(Data.INTENT_IS_REGION, true);
         startActivity(intent);
     }

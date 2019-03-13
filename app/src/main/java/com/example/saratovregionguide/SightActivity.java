@@ -24,7 +24,10 @@ public class SightActivity extends AppCompatActivity {
 
         currentSight = (Sight) getIntent().getSerializableExtra(Data.INTENT_SIGHT);
 
+        // title
         textViewTitle.setText((currentSight.getLongName().equals("")) ? currentSight.getShortName() : currentSight.getLongName());
+
+        // image
         try {
             InputStream inputStream = getAssets().open(currentSight.getImagePath());
             Drawable image = Drawable.createFromStream(inputStream, null);
@@ -32,6 +35,8 @@ public class SightActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // text
         String filePath = currentSight.getTextPath();
         byte[] buffer = null;
         InputStream inputStream;

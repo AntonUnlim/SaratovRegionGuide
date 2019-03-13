@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SightsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorGreen1">
     <TextView
         style="@style/TextViewTitleStyle"
         android:id="@+id/textViewTitle"/>

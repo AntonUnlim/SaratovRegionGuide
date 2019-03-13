@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="NoActionBarTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="NoActionBarTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimaryDark">@color/colorGreen2</item>
         <item name="android:textColor">@color/colorGreen6</item>
     </style>

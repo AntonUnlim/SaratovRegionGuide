@@ -1,69 +1,47 @@
 package com.example.saratovregionguide;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-
-import java.util.ArrayList;
-
 public class Region {
 
-    private DatabaseHelper sqlHelper;
-    private SQLiteDatabase db;
-    private Cursor userCursor;
+    private int ID;
+    private String nominativeName;
+    private String genitiveName;
+    private String nominativeRegionalCenter;
+    private String genitiveRegionalCenter;
+    private String emblemPath;
+    private String emblemDescription;
+    private int distanceToSaratov;
 
-    public Region(Context context) {
-        sqlHelper = new DatabaseHelper(context);
-        db = sqlHelper.open();
+    public Region(int ID,
+            String nominativeName,
+            String genitiveName,
+            String nominativeRegionalCenter,
+            String genitiveRegionalCenter,
+            String emblemPath,
+            String emblemDescription,
+            int distanceToSaratov) {
+        this.ID = ID;
+        this.nominativeName = nominativeName;
+        this.genitiveName = genitiveName;
+        this.nominativeRegionalCenter = nominativeRegionalCenter;
+        this.genitiveRegionalCenter = genitiveRegionalCenter;
+        this.emblemPath = emblemPath;
+        this.emblemDescription = emblemDescription;
+        this.distanceToSaratov = distanceToSaratov;
     }
 
-    private String select(int ID, String field) {
-        String queryString = "SELECT " + field + " FROM Region WHERE _id = " + ID;
-        userCursor = db.rawQuery(queryString, null);
-        userCursor.moveToFirst();
-        return userCursor.getString(0);
-    }
+    public String getNominativeName() {return this.nominativeName;}
 
-    public String getNominativeName(int ID) {return select(ID, "NominativeName");}
+    public String getGenitiveName() {return this.genitiveName;}
 
-    public String getGenitiveName(int ID) {return select(ID, "GenitiveName");}
+    public String getNominativeRegionalCenter() {return this.nominativeRegionalCenter;}
 
-    //public ArrayList<Sight> getListOfRegionalCenterSights() {return listOfRegionalCenterSights;}
+    public String getGenitiveRegionalCenter(){return this.genitiveRegionalCenter;}
 
-    //public ArrayList<Sight> getListOfRegionSights() { return listOfRegionSights;}
+    public String getEmblemPath() {return this.emblemPath;}
 
-    public String getNominativeRegionalCenter(int ID) {return select(ID, "NominativeRegionalCenter");}
+    public String getEmblemDescription() {return this.emblemDescription;}
 
-    public String getGenitiveRegionalCenter(int ID){return select(ID, "GenitiveRegionalCenter");}
+    public String getDistanceToSaratov() {return distanceToSaratov + " км";}
 
-    public Drawable getEmblem(int ID) {
-        String query = "SELECT Emblem FROM Region WHERE _id = " + ID;
-        Cursor cur = db.rawQuery(query, null);
-
-        if (cur.moveToFirst()){
-            byte[] imgByte = cur.getBlob(0);
-            cur.close();
-            Drawable draw;
-            draw = BitmapFactory.decodeByteArray(imgByte, 0, imgByte.length);
-            return draw;
-
-        }
-        if (cur != null && !cur.isClosed()) {
-            cur.close();
-        }
-
-        return null ;
-    }
-
-    public String getEmblemDescription() {
-        return emblemDescription;
-    }
-
-    public String getDistanceToSaratov() {
-        return distanceToSaratov + " км";
-    }
+    public int getID() {return this.ID;}
 }

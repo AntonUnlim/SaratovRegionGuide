@@ -1,6 +1,8 @@
 package com.example.saratovregionguide;
 
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +14,24 @@ import java.util.ArrayList;
 
 public class SightsActivity extends AppCompatActivity {
 
+    private DatabaseHelper databaseHelper;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sights);
 
-        Region currentRegion = (Region) getIntent().getSerializableExtra(Data.INTENT_REGION);
+        databaseHelper = new DatabaseHelper(this);
+        try {
+            db = databaseHelper.getReadableDatabase();
+        } catch (SQLException e) {
+            throw e;
+        }
+        int regionID = getIntent().getIntExtra(Data.INTENT_REGION_ID, -1);
+        Region currentRegion = Data.findRegionByID(regionID);
         boolean isRegion = getIntent().getBooleanExtra(Data.INTENT_IS_REGION, false);
-        ArrayList<Sight> currentListOfSights = (isRegion) ? currentRegion.getListOfRegionSights() : currentRegion.getListOfRegionalCenterSights();
+        ArrayList<Sight> currentListOfSights = Data.getListOfSights(db, regionID, isRegion);
         TextView textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         LinearLayout linearLayoutSights = (LinearLayout) findViewById(R.id.linearLayoutSights);
 
@@ -37,5 +49,11 @@ public class SightsActivity extends AppCompatActivity {
             });
             linearLayoutSights.addView(textView);
         }
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        db.close();
     }
 }

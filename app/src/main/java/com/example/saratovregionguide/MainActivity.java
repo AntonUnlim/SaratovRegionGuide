@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper databaseHelper;
@@ -17,7 +19,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
-        databaseHelper.createDB();
+        try{
+            databaseHelper.updateDataBase();
+        }
+        catch (IOException e){
+            throw new Error("UnableToUpdateDatabase");
+        }
     }
 
     public void startRegions(View view) {
