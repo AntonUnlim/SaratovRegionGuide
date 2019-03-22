@@ -36,7 +36,8 @@ public class RegionActivity extends AppCompatActivity {
         textViewTitle.setText(currentRegion.getNominativeName());
 
         // distance to Saratov
-        textViewDistanceToSaratov.setText("Расстояние Саратов - " + currentRegion.getNominativeRegionalCenter() + " " + currentRegion.getDistanceToSaratov());
+        if (currentRegion.getID() != 32) // Саратов
+            textViewDistanceToSaratov.setText("Расстояние Саратов - " + currentRegion.getNominativeRegionalCenter() + " " + currentRegion.getDistanceToSaratov());
 
         // emblem image
         imageViewEmblem = (ImageView) findViewById(R.id.imageViewEmblem);

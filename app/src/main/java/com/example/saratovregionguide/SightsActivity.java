@@ -29,8 +29,8 @@ public class SightsActivity extends AppCompatActivity {
             throw e;
         }
         int regionID = getIntent().getIntExtra(Data.INTENT_REGION_ID, -1);
-        Region currentRegion = Data.findRegionByID(regionID);
-        boolean isRegion = getIntent().getBooleanExtra(Data.INTENT_IS_REGION, false);
+        final Region currentRegion = Data.findRegionByID(regionID);
+        final boolean isRegion = getIntent().getBooleanExtra(Data.INTENT_IS_REGION, false);
         ArrayList<Sight> currentListOfSights = Data.getListOfSights(db, regionID, isRegion);
         TextView textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         LinearLayout linearLayoutSights = (LinearLayout) findViewById(R.id.linearLayoutSights);
@@ -44,6 +44,7 @@ public class SightsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(SightsActivity.this, SightActivity.class);
                     intent.putExtra(Data.INTENT_SIGHT, (Serializable) v.getTag());
+                    intent.putExtra(Data.INTENT_REGION_NAME, isRegion?currentRegion.getNominativeName():currentRegion.getNominativeRegionalCenter());
                     startActivity(intent);
                 }
             });

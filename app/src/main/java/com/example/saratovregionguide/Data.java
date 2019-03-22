@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Data {
     public static final String INTENT_REGION_ID = "RegionID";
+    public static final String INTENT_REGION_NAME = "RegionName";
     public static final String INTENT_IS_REGION = "IsRegion";
     public static final String INTENT_SIGHT = "Sight";
     public static String HTML_START = "<html><head>" +

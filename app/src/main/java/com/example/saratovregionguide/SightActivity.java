@@ -19,22 +19,27 @@ public class SightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sight);
 
         TextView textViewTitle = (TextView) findViewById(R.id.textViewTitle);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        TextView textViewRegionName = (TextView) findViewById(R.id.textViewRegionName);
+        //ImageView imageView = (ImageView) findViewById(R.id.imageView);
         WebView webViewText = (WebView) findViewById(R.id.webViewText);
 
         currentSight = (Sight) getIntent().getSerializableExtra(Data.INTENT_SIGHT);
+        String regionName = getIntent().getStringExtra(Data.INTENT_REGION_NAME);
+
+        // region or center name
+        textViewRegionName.setText(regionName);
 
         // title
         textViewTitle.setText((currentSight.getLongName().equals("")) ? currentSight.getShortName() : currentSight.getLongName());
 
         // image
-        try {
+        /*try {
             InputStream inputStream = getAssets().open(currentSight.getImagePath());
             Drawable image = Drawable.createFromStream(inputStream, null);
             imageView.setImageDrawable(image);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // text
         String filePath = currentSight.getTextPath();
