@@ -37,7 +37,7 @@ public class LinksActivity extends AppCompatActivity {
                         "Name, " +      // 1
                         "Address " +    // 2
                         "FROM Link " +
-                        "ORDER BY Name";
+                        "ORDER BY _id";
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
@@ -51,7 +51,8 @@ public class LinksActivity extends AppCompatActivity {
         cursor.close();
 
         for (final Link link : listOfLinks) {
-            TextView tv = Data.getStyledTextView(this, link.getName());
+            String name = link.getName().replace("\\n", "\n");
+            TextView tv = Data.getStyledTextView(this, name);
 
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override

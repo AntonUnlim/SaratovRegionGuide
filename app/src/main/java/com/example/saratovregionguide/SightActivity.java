@@ -30,7 +30,8 @@ public class SightActivity extends AppCompatActivity {
         textViewRegionName.setText(regionName);
 
         // title
-        textViewTitle.setText((currentSight.getLongName().equals("")) ? currentSight.getShortName() : currentSight.getLongName());
+        String longName = currentSight.getLongName().replace("\\n", "\n");
+        textViewTitle.setText((currentSight.getLongName().equals("")) ? currentSight.getShortName() : longName);
 
         // image
         /*try {
@@ -42,20 +43,7 @@ public class SightActivity extends AppCompatActivity {
         }*/
 
         // text
-        String filePath = currentSight.getTextPath();
-        byte[] buffer = null;
-        InputStream inputStream;
-        try {
-            inputStream = getAssets().open(filePath);
-            int size = inputStream.available();
-            buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        String textMain = new String(buffer);
+        String textMain = currentSight.getText();
         webViewText.setBackgroundColor(getResources().getColor(R.color.colorGreen1, getBaseContext().getTheme()));
         webViewText.loadData(Data.HTML_START + textMain + Data.HTML_END, "text/html", "UTF-8");
     }

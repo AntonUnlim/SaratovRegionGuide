@@ -7,14 +7,14 @@ public class Sight implements Serializable {
     private String shortName;
     private String longName;
     private String imagePath;
-    private String textPath;
+    private String text;
 
-    public Sight(int ID, String shortName, String longName, String imagePath, String textPath) {
+    public Sight(int ID, String shortName, String longName, String imagePath, String text) {
         this.ID = ID;
         this.shortName = shortName;
         this.longName = longName;
         this.imagePath = imagePath;
-        this.textPath = textPath;
+        this.text = text;
     }
 
     public String getShortName() {
@@ -29,8 +29,8 @@ public class Sight implements Serializable {
         return imagePath;
     }
 
-    public String getTextPath() {
-        return textPath;
+    public String getText() {
+        return text;
     }
 
     public int getID(){return ID;}
