@@ -44,7 +44,7 @@ public class RegionActivity extends AppCompatActivity {
 
         // emblem description
         webMainText.setBackgroundColor(getResources().getColor(R.color.colorGreen1, getBaseContext().getTheme()));
-        webMainText.loadData(Data.HTML_START + currentRegion.getEmblemDescription() + Data.HTML_END, "text/html", "UTF-8");
+        webMainText.loadData(Data.HTML_START + currentRegion.getEmblemDescription() + Data.HTML_END, "text/html; charset=utf-8", "UTF-8");
 
         // button
         textViewRegionalCenter.setText(currentRegion.getNominativeRegionalCenter());

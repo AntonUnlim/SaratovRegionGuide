@@ -1,14 +1,9 @@
 package com.example.saratovregionguide;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class SightActivity extends AppCompatActivity {
     private Sight currentSight;
@@ -45,6 +40,6 @@ public class SightActivity extends AppCompatActivity {
         // text
         String textMain = currentSight.getText();
         webViewText.setBackgroundColor(getResources().getColor(R.color.colorGreen1, getBaseContext().getTheme()));
-        webViewText.loadData(Data.HTML_START + textMain + Data.HTML_END, "text/html", "UTF-8");
+        webViewText.loadData(Data.HTML_START + textMain + Data.HTML_END, "text/html; charset=utf-8", "UTF-8");
     }
 }
