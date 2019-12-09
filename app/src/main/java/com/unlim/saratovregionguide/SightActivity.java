@@ -1,4 +1,4 @@
-package com.example.saratovregionguide;
+package com.unlim.saratovregionguide;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.saratovregionguide;
+package com.unlim.saratovregionguide;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.saratovregionguide;
+package com.unlim.saratovregionguide;
 
 import android.content.Intent;
 import android.database.SQLException;
@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.Serializable;
 
 public class RegionsActivity extends AppCompatActivity {
     private LinearLayout linearLayoutRegions;

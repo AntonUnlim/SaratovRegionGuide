@@ -1,4 +1,4 @@
-package com.example.saratovregionguide;
+package com.unlim.saratovregionguide;
 
 public class Region {
 

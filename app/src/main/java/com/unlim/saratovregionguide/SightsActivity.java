@@ -1,4 +1,4 @@
-package com.example.saratovregionguide;
+package com.unlim.saratovregionguide;
 
 import android.content.Intent;
 import android.database.SQLException;
